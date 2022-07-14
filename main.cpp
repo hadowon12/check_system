@@ -41,10 +41,16 @@ int main()
             date[i][1] += 1; //출석일수 증가
         } else if (sys == 2) {
             srand(time(NULL));
-            j=rand() % 100;
-            date[j][0] += 1;// 고유번호 더이상 안나오게 하는것
-            printf("당신의 고유번호는 %d 입니다.",j);
-        } else if(sys == 3){
+            for (;;) {
+                j = rand() % 1000;
+                if (date[j][0] == 1) {
+                    date[j][0] += 1;// 고유번호 더이상 안나오게 하는것
+                    break;
+                }
+            }
+            printf("당신의 고유번호는 %d 입니다.", j);
+        }
+            else if(sys == 3){
             for(int a=0;a<1000;a++)
             {
                 if(date[a][0] == 1)
